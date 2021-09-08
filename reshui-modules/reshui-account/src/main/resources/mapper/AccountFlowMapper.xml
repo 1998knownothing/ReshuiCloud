@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reshui.account.mapper.AccountFlowMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.reshui.account.entity.AccountFlow">
+        <id column="flow_id" property="flowId" />
+        <result column="account_id" property="accountId" />
+        <result column="user_id" property="userId" />
+        <result column="order_id" property="orderId" />
+        <result column="fee" property="fee" />
+        <result column="create_time" property="createTime" />
+        <result column="remark" property="remark" />
+        <result column="operation_type" property="operationType" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        flow_id, account_id, user_id, order_id, fee, create_time, remark, operation_type, status
+    </sql>
+
+</mapper>

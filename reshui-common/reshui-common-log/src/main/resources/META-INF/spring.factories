@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.reshui.common.log.service.AsyncLogService,\
+  com.reshui.common.log.aspect.LogAspect
