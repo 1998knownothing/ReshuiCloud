@@ -25,7 +25,10 @@
             <groupId>com.reshui</groupId>
             <artifactId>reshui-common-db</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.reshui</groupId>
+            <artifactId>reshui-api-account</artifactId>
+        </dependency>
 
 
     </dependencies>

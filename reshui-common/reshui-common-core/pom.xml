@@ -16,6 +16,18 @@
 
     <dependencies>
 
+        <!-- SpringCloud Openfeign 版本升级后不再使用Ribbon必须引入loadbalancer-->
+        <!--别忘记调用方开启并指定路径@EnableFeignClients(basePackages = "com.reshui") -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!-- SpringCloud Loadbalancer -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
         <!-- Spring Context Support -->
         <dependency>
             <groupId>org.springframework</groupId>

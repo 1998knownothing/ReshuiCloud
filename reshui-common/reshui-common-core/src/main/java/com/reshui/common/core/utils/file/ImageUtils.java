@@ -56,7 +56,7 @@ public class ImageUtils
     /**
      * 读取文件为字节数据
      * 
-     * @param  
+     * @param
      * @return 字节数据
      */
     public static byte[] readFile(String url)

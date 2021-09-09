@@ -257,6 +257,12 @@
 <!--                <version>${ruoyi.version}</version>-->
 <!--            </dependency>-->
 
+
+            <dependency>
+                <groupId>com.reshui</groupId>
+                <artifactId>reshui-api-account</artifactId>
+                <version>${reshui.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

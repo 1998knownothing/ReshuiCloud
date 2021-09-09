@@ -3,10 +3,14 @@ package com.reshui.common.core.constant;
 /**
  * 服务名称
  * 
- * @author ruoyi
+ * @author reshui
  */
 public class ServiceNameConstants
 {
+    /**
+     * 账户服务的serviceid
+     */
+    public static final String ACCOUNT_SERVICE = "reshui-account";
     /**
      * 认证服务的serviceid
      */

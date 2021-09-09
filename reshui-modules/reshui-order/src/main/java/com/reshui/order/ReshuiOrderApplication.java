@@ -4,12 +4,14 @@ package com.reshui.order;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * 订单模块
  * 
  * @author reshui
  */
+@EnableFeignClients(basePackages = "com.reshui")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class ReshuiOrderApplication
