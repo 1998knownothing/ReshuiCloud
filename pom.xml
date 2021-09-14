@@ -249,7 +249,11 @@
                 <artifactId>reshui-common-redis</artifactId>
                 <version>${reshui.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.reshui</groupId>
+                <artifactId>reshui-common-mq</artifactId>
+                <version>${reshui.version}</version>
+            </dependency>
             <!-- 系统接口 -->
 <!--            <dependency>-->
 <!--                <groupId>com.ruoyi</groupId>-->
@@ -257,7 +261,21 @@
 <!--                <version>${ruoyi.version}</version>-->
 <!--            </dependency>-->
 
-
+            <dependency>
+                <groupId>com.reshui</groupId>
+                <artifactId>reshui-api-goods</artifactId>
+                <version>${reshui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.reshui</groupId>
+                <artifactId>reshui-api-order</artifactId>
+                <version>${reshui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.reshui</groupId>
+                <artifactId>reshui-api-account</artifactId>
+                <version>${reshui.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.reshui</groupId>
                 <artifactId>reshui-api-account</artifactId>

@@ -6,6 +6,7 @@ import com.reshui.common.core.domain.R;
 import com.reshui.common.core.web.domain.AjaxResult;
 import com.reshui.order.entity.Order;
 import com.reshui.order.service.IOrderService;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,8 @@ public class OrderController {
     @Autowired
     private RemoteAccountService remoteAccountService;
 
+    @Resource
+    private RocketMQTemplate rocketMQTemplate;
 
     /**
      * 下单
@@ -151,5 +154,13 @@ public class OrderController {
 
     }
 
+    @GetMapping("/mq")
+    public R<?> mq(){
+
+        rocketMQTemplate.convertAndSend("order-topic", "order-string-test");
+
+        return R.ok();
+
+    }
 }
 

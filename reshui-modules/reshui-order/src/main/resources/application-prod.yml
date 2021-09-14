@@ -77,3 +77,8 @@ spring:
           max-active: 8
           # #连接池最大阻塞等待时间（使用负值表示没有限制）
           max-wait: -1ms
+
+rocketmq:
+  name-server: 127.0.0.1:9876 #rocketMQ服务的地址
+  producer:
+    group: shop-order # 生产者组

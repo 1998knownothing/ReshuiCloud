@@ -21,6 +21,7 @@
         <module>reshui-common-security</module>
         <module>reshui-common-redis</module>
         <module>reshui-common-db</module>
+        <module>reshui-common-mq</module>
     </modules>
 
 </project>
