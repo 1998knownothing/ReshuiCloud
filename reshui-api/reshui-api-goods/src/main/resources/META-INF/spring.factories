@@ -1,4 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.reshui.system.api.factory.RemoteUserFallbackFactory,\
-  com.reshui.system.api.factory.RemoteLogFallbackFactory, \
-  com.reshui.system.api.factory.RemoteFileFallbackFactory
+  com.reshui.goods.api.factory.RemoteGoodsFallbackFactory

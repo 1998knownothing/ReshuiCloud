@@ -11,5 +11,12 @@
 
     <artifactId>reshui-api-goods</artifactId>
 
+    <dependencies>
+        <!-- RuoYi Common Core-->
+        <dependency>
+            <groupId>com.reshui</groupId>
+            <artifactId>reshui-common-core</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

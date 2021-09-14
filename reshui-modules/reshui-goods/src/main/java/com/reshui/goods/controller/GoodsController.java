@@ -1,12 +1,11 @@
 package com.reshui.goods.controller;
 
 
+import com.reshui.common.core.domain.R;
 import com.reshui.common.core.web.domain.AjaxResult;
+import com.reshui.goods.entity.Goods;
 import com.reshui.goods.service.IGoodsService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -26,11 +25,38 @@ public class GoodsController {
     @Resource
     private IGoodsService iGoodsService;
 
+    /**
+     * 获取商品列表
+     * @return
+     */
     @GetMapping("/list")
-    public AjaxResult getList(){
+    public R<?> getList(){
 
-        return AjaxResult.success(iGoodsService.list());
+        return R.ok(iGoodsService.list());
 
+    }
+
+    /**
+     * 根据id获取商品详细信息
+     * @param id
+     * @return
+     */
+    @PostMapping("/get/{id}")
+    public R<?> getById(@PathVariable String id){
+        Goods byId = iGoodsService.getById(id);
+        return R.ok(byId);
+    }
+    /**
+     * 更新商品库存
+     * @param goods
+     * @return
+     */
+
+    @PostMapping("/update")
+    public R<?> updateById(@RequestBody Goods goods){
+        boolean updateById = iGoodsService.updateById(goods);
+
+        return R.ok(updateById);
     }
 }
 
