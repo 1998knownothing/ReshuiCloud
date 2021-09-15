@@ -12,7 +12,7 @@ public class RocketMqConstant {
     /**
      * 取消订单时间，实际上30分钟
      */
-    public static final int CANCEL_ORDER_DELAY_LEVEL = 1;
+    public static final int CANCEL_ORDER_DELAY_LEVEL = 14;
 
     /**
      * 默认发送消息超时时间
