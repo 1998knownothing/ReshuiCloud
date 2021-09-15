@@ -2,6 +2,7 @@ package com.reshui.goods.service;
 
 import com.reshui.goods.entity.Goods;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IGoodsService extends IService<Goods> {
 
+    public boolean lock(String goodsId, Long num,String orderId,String userId);
 }

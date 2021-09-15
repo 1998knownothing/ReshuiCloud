@@ -49,7 +49,7 @@ public class GoodsFlow implements Serializable {
     /**
      * 数量
      */
-    private String num;
+    private Long num;
 
     /**
      * 备注

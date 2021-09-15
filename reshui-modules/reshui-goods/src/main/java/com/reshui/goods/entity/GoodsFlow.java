@@ -57,7 +57,7 @@ public class GoodsFlow implements Serializable {
      * 数量
      */
     @TableField("num")
-    private String num;
+    private Long num;
 
     /**
      * 备注

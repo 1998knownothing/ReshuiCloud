@@ -15,4 +15,16 @@
         goods_id, goods_name, num, create_time
     </sql>
 
+    <update id="reduceStock">
+        update goods
+        set `num`      = `num` - #{count}
+        where goods_id = #{goodsId}
+          and #{count} &lt;= `num`
+    </update>
+
+    <insert id="addStock">
+
+
+    </insert>
+
 </mapper>

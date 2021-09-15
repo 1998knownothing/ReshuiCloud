@@ -41,6 +41,11 @@ public class OrderController {
 
     @PostMapping("/create")
     public R<?> create(Order order){
+        //防止订单重复-redis
+        //update goods set num = num-5 where goods_id = 1 and num>=5
+        //
+        //update goods set num = num-6 where goods_id = 1 and num>=6
+
         //获取当前用户信息
 
         //查询当前商品库存

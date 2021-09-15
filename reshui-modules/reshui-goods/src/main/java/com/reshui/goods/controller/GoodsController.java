@@ -58,5 +58,20 @@ public class GoodsController {
 
         return R.ok(updateById);
     }
+
+    /**
+     * 扣减库存
+     * @param goodsId
+     * @param num
+     * @param orderId
+     * @param userId
+     * @return
+     */
+    @PostMapping("/lock")
+    public R<?> lock(String goodsId, Long num,String orderId,String userId){
+        boolean lock = iGoodsService.lock(goodsId, num, orderId, userId);
+        return R.ok(lock);
+    }
+
 }
 
