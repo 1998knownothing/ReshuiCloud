@@ -31,6 +31,10 @@
         </dependency>
         <dependency>
             <groupId>com.reshui</groupId>
+            <artifactId>reshui-api-goods</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.reshui</groupId>
             <artifactId>reshui-common-mq</artifactId>
         </dependency>
 

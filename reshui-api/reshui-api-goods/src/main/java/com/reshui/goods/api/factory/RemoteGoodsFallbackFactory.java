@@ -28,6 +28,11 @@ public class RemoteGoodsFallbackFactory implements FallbackFactory<RemoteGoodsSe
         return new RemoteGoodsService()
         {
             @Override
+            public R<?> lock(String goodsId, Long num, String orderId, String userId) {
+                return R.fail("获取信息失败:" + throwable.getMessage());
+            }
+
+            //@Override
             public R<?> getById(String id) {
                 return R.fail("获取信息失败:" + throwable.getMessage());
             }

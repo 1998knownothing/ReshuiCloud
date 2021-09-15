@@ -3,8 +3,6 @@ package com.reshui.order.service;
 import com.reshui.order.entity.Order;
 import com.baomidou.mybatisplus.extension.service.IService;
 
-import java.util.List;
-
 /**
  * <p>
  *  服务类
@@ -21,6 +19,6 @@ public interface IOrderService extends IService<Order> {
      * @param order
      * @return
      */
-    Long submit(Long userId, Order order);
+    boolean submit(String userId, Order order);
 
 }

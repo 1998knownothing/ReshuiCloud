@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -35,9 +36,26 @@ public class OrderController {
 
     /**
      * 下单
-     * @param order
      * @return
      */
+
+    @PostMapping("/submit")
+    public R<?> submit(String goodsId,Long num){
+
+        Order order = new Order();
+        order.setUserId("user1");
+        order.setCreateTime(LocalDateTime.now());
+        order.setGoodsId(goodsId);
+        order.setGoodsNum(num.intValue());
+        order.setOrderStatus("创建订单");
+        order.setStep("创建订单");
+
+        //提交订单 未支付
+        boolean submitIsSuccess = iOrderService.submit("user1", order);
+
+        return R.ok(submitIsSuccess);
+
+    }
 
     @PostMapping("/create")
     public R<?> create(Order order){
