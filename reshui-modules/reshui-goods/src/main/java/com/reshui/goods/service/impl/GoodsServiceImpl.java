@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -53,6 +54,8 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
         goodsFlow.setGoodsId(goodsId);
         goodsFlow.setOrderId(orderId);
         goodsFlow.setType("-");
+        goodsFlow.setIsDelete("N");
+        goodsFlow.setCreateTime(LocalDateTime.now());
 
         goodsFlowMapper.insert(goodsFlow);
         // 一个小时后解锁库存

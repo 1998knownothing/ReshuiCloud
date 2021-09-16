@@ -55,11 +55,6 @@ public class AccountFlow implements Serializable {
     @TableField("fee")
     private BigDecimal fee;
 
-    /**
-     * 创建时间
-     */
-    @TableField("create_time")
-    private LocalDateTime createTime;
 
     /**
      * 备注
@@ -79,5 +74,22 @@ public class AccountFlow implements Serializable {
     @TableField("status")
     private String status;
 
+    /**
+     * 创建时间
+     */
+    @TableField("create_time")
+    private LocalDateTime createTime;
+
+    /**
+     * 修改时间
+     */
+    @TableField("update_time")
+    private LocalDateTime updateTime;
+
+    /**
+     * 删除标识 (Y/N)
+     */
+    @TableField("is_delete")
+    private String isDelete;
 
 }

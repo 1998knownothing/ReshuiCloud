@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -56,5 +57,20 @@ public class GoodsFlow implements Serializable {
      */
     private String remark;
 
+
+    /**
+     * 创建时间
+     */
+    private LocalDateTime createTime;
+
+    /**
+     * 修改时间
+     */
+    private LocalDateTime updateTime;
+
+    /**
+     * 删除标识 (Y/N)
+     */
+    private String isDelete;
 
 }

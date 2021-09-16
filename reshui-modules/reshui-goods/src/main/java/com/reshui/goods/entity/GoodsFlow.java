@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -66,4 +68,21 @@ public class GoodsFlow implements Serializable {
     private String remark;
 
 
+    /**
+     * 创建时间
+     */
+    @TableField("create_time")
+    private LocalDateTime createTime;
+
+    /**
+     * 修改时间
+     */
+    @TableField("update_time")
+    private LocalDateTime updateTime;
+
+    /**
+     * 删除标识 (Y/N)
+     */
+    @TableField("is_delete")
+    private String isDelete;
 }
