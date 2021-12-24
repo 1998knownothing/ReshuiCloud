@@ -28,6 +28,10 @@
             <groupId>com.reshui</groupId>
             <artifactId>reshui-common-mq</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.reshui</groupId>
+            <artifactId>reshui-api-order</artifactId>
+        </dependency>
 
     </dependencies>
 

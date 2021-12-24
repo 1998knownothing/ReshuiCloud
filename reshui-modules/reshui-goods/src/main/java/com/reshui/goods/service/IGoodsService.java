@@ -15,4 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface IGoodsService extends IService<Goods> {
 
     public boolean lock(String goodsId, Long num,String orderId,String userId);
+
+    public void unlockStock(String orderId) ;
 }

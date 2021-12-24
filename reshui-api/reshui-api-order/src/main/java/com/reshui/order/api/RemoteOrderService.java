@@ -10,13 +10,14 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * 订单服务
  * 
  * @author reshui
  */
-@FeignClient(contextId = "remoteGoodsService", value = ServiceNameConstants.GOODS_SERVICE, fallbackFactory = RemoteOrderFallbackFactory.class)
+@FeignClient(contextId = "RemoteOrderService", value = ServiceNameConstants.ORDER_SERVICE, fallbackFactory = RemoteOrderFallbackFactory.class)
 public interface RemoteOrderService
 {
     /**
@@ -24,8 +25,8 @@ public interface RemoteOrderService
      * @param id
      * @return
      */
-    @GetMapping("/get/{id}")
-    public R<?> getById(@PathVariable String id);
+    @GetMapping("/order/get/{id}")
+    public R<Order> getById(@PathVariable(value = "id") String id);
 
     /**
      * 更新订单信息
@@ -33,6 +34,6 @@ public interface RemoteOrderService
      * @return
      */
     @PostMapping("/update")
-    public R<?> update(@PathVariable Order order);
+    public R<?> update(@RequestBody Order order);
 
 }

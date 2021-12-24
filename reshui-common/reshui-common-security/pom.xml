@@ -10,14 +10,24 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>reshui-common-security</artifactId>
+    <description>
+        ruoyi-common-security安全模块
+    </description>
 
     <dependencies>
-
+        <!-- RuoYi Common Core-->
+        <dependency>
+            <groupId>com.reshui</groupId>
+            <artifactId>reshui-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.reshui</groupId>
+            <artifactId>reshui-common-db</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.reshui</groupId>
             <artifactId>reshui-common-redis</artifactId>
         </dependency>
-
 
     </dependencies>
 

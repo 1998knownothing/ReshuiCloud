@@ -20,4 +20,7 @@
         order_id, user_id, order_status, goods_id, goods_num, count_fee, step, create_time, update_time
     </sql>
 
+    <update id="cancelOrder">
+        update `orders` set `order_status`=#{orderStatus},update_time=NOW() where step = 'N' and order_id = #{orderId}
+    </update>
 </mapper>

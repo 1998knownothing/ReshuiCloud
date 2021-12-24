@@ -21,4 +21,9 @@ public interface IOrderService extends IService<Order> {
      */
     boolean submit(String userId, Order order);
 
+    /**
+     * 取消订单
+     * @param orderId 订单id
+     */
+    void cancelOrder(String orderId);
 }

@@ -1,6 +1,8 @@
 package com.reshui.order.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.reshui.account.api.RemoteAccountService;
 import com.reshui.common.core.domain.R;
 import com.reshui.common.core.web.domain.AjaxResult;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Objects;
 
 /**
  * <p>
@@ -47,14 +51,33 @@ public class OrderController {
         order.setCreateTime(LocalDateTime.now());
         order.setGoodsId(goodsId);
         order.setGoodsNum(num.intValue());
-        order.setOrderStatus("创建订单");
-        order.setStep("创建订单");
+        order.setOrderStatus("订单创建");
+        //支付状态
+        order.setStep("N");
 
         //提交订单 未支付
         boolean submitIsSuccess = iOrderService.submit("user1", order);
 
         return R.ok(submitIsSuccess);
 
+    }
+    /**
+     * 取消订单
+     */
+    @PutMapping("/cancel/{orderId}")
+    public R<String> cancelOrder(@PathVariable("orderId") String orderId) {
+        String userId = "user1";
+        LambdaQueryWrapper<Order> wrapper = new QueryWrapper<Order>().lambda()
+                .eq(Order::getOrderId, orderId)
+                .eq(Order::getUserId, userId);
+        Order order = iOrderService.getOne(wrapper);
+        if (order.getOrderStatus() == "订单支付") {
+            // 订单已支付，无法取消订单
+            return R.fail("订单已支付，不可取消");
+        }
+        // 如果订单未支付的话，将订单设为取消状态
+        iOrderService.cancelOrder(order.getOrderId());
+        return R.ok();
     }
 
     @PostMapping("/create")
@@ -110,6 +133,7 @@ public class OrderController {
     }
 
 
+
     /**
      * 用户手动取消订单
      * @param id
@@ -163,12 +187,12 @@ public class OrderController {
 
 
 
-    @GetMapping("/get/{userId}")
-    public AjaxResult getAccount(@PathVariable String userId){
-
-        return AjaxResult.success(remoteAccountService.getAccountInfo(userId));
-
-    }
+//    @GetMapping("/get/{userId}")
+//    public AjaxResult getAccount(@PathVariable String userId){
+//
+//        return AjaxResult.success(remoteAccountService.getAccountInfo(userId));
+//
+//    }
 
     @GetMapping("/list")
     public AjaxResult getList(){

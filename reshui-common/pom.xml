@@ -22,6 +22,7 @@
         <module>reshui-common-redis</module>
         <module>reshui-common-db</module>
         <module>reshui-common-mq</module>
+        <module>reshui-common-swagger</module>
     </modules>
 
 </project>

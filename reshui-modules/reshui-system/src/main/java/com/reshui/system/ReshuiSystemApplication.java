@@ -1,6 +1,7 @@
 package com.reshui.system;
 
 
+import com.reshui.common.swagger.annotation.EnableCustomSwagger2;
 import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +12,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * 
  * @author reshui
  */
+@EnableCustomSwagger2
 @EnableDiscoveryClient
 @SpringBootApplication
 public class ReshuiSystemApplication

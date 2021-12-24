@@ -81,11 +81,11 @@
             <artifactId>reshui-common-db</artifactId>
         </dependency>
 
-<!--        &lt;!&ndash; RuoYi Common Swagger &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.ruoyi</groupId>-->
-<!--            <artifactId>ruoyi-common-swagger</artifactId>-->
-<!--        </dependency>-->
+        <!-- RuoYi Common Swagger -->
+        <dependency>
+            <groupId>com.reshui</groupId>
+            <artifactId>reshui-common-swagger</artifactId>
+        </dependency>
 
     </dependencies>
 

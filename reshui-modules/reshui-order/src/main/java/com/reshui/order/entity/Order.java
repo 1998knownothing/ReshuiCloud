@@ -38,6 +38,8 @@ public class Order implements Serializable {
     private String userId;
 
     /**
+     * 简化订单状态(订单创建>订单支付>订单完成>取消订单)
+     * 订单状态一共有六种：1:待付款 2:待发货 3:待收货(已发货) 5:成功 6:失败
      * 订单状态(订单创建>订单支付>订单生产>订单确认>订单完成)
      */
     @TableField("order_status")
@@ -62,6 +64,7 @@ public class Order implements Serializable {
     private BigDecimal countFee;
 
     /**
+     * 支付状态 是否已支付，1.已支付0.未支付
      * 步骤
      */
     @TableField("step")

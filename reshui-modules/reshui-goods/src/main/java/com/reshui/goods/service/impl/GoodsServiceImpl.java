@@ -1,5 +1,8 @@
 package com.reshui.goods.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.reshui.common.core.domain.R;
 import com.reshui.common.mq.config.RocketMqConstant;
 import com.reshui.goods.entity.Goods;
 import com.reshui.goods.entity.GoodsFlow;
@@ -7,6 +10,9 @@ import com.reshui.goods.mapper.GoodsFlowMapper;
 import com.reshui.goods.mapper.GoodsMapper;
 import com.reshui.goods.service.IGoodsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.reshui.order.api.RemoteOrderService;
+import com.reshui.order.api.domain.Order;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -27,6 +34,7 @@ import java.util.Objects;
  * @since 2021-09-08
  */
 @Service
+@Slf4j
 public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements IGoodsService {
 
 
@@ -35,6 +43,9 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
 
     @Resource
     private GoodsFlowMapper goodsFlowMapper;
+
+    @Resource
+    private RemoteOrderService remoteOrderService;
 
 
     @Override
@@ -72,6 +83,32 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
         }
 
         return true;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void unlockStock(String orderId) {
+        log.info("unlockStock:{}",orderId);
+        //远程调用 获取订单状态
+        R<Order> orderResponse = remoteOrderService.getById(orderId);
+        log.info("unlockStock.orderResponse:{}",orderResponse.toString());
+        if (orderResponse.getCode()!=200) {
+            throw new RuntimeException(orderResponse.getMsg());
+        }
+        Order order = orderResponse.getData();
+        // 该订单没有下单成功，或订单已取消，赶紧解锁库存
+        if(order.getOrderStatus().equals("取消订单") == false){
+            return;
+        }
+        //根据订单号 获取锁定的库存
+        LambdaQueryWrapper<GoodsFlow> queryWrapper = new QueryWrapper<GoodsFlow>()
+                .lambda().eq(GoodsFlow::getOrderId, orderId);
+        GoodsFlow goodsFlow = goodsFlowMapper.selectOne(queryWrapper);
+        goodsFlow.setIsDelete("Y");
+        //还原商品库存
+        this.baseMapper.addStock(goodsFlow.getGoodsId(),goodsFlow.getNum());
+        //解锁库存
+        goodsFlowMapper.updateById(goodsFlow);
     }
 
 }

@@ -28,7 +28,7 @@ public class RemoteOrderFallbackFactory implements FallbackFactory<RemoteOrderSe
         return new RemoteOrderService()
         {
             @Override
-            public R<?> getById(String id) {
+            public R<Order> getById(String id) {
                 return R.fail("获取信息失败:" + throwable.getMessage());
             }
 

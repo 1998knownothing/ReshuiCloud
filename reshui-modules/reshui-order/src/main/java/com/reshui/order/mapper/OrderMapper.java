@@ -2,6 +2,7 @@ package com.reshui.order.mapper;
 
 import com.reshui.order.entity.Order;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface OrderMapper extends BaseMapper<Order> {
 
+    int cancelOrder(@Param("orderStatus") String orderStatus,@Param("orderId") String orderId);
 }

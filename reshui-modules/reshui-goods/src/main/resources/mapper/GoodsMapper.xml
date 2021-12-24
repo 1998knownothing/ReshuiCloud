@@ -23,8 +23,9 @@
     </update>
 
     <insert id="addStock">
-
-
+        update goods
+        set `num`      = `num` + #{count}
+        where goods_id = #{goodsId}
     </insert>
 
 </mapper>
